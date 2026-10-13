@@ -1,0 +1,307 @@
+/* ========================================
+   LANGUAGE DETECTION AI — COLORFUL UI
+======================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --purple: #7c3aed;
+    --blue: #2563eb;
+    --pink: #ec4899;
+    --cyan: #06b6d4;
+    --dark: #1e1b4b;
+    --muted: #64748b;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    padding: 35px 18px;
+    font-family: 'Inter', sans-serif;
+    color: var(--dark);
+    background:
+        radial-gradient(circle at 10% 15%, #fbcfe8 0, transparent 30%),
+        radial-gradient(circle at 90% 20%, #bfdbfe 0, transparent 32%),
+        radial-gradient(circle at 70% 90%, #c4b5fd 0, transparent 35%),
+        linear-gradient(135deg, #fdf4ff, #eff6ff 50%, #f5f3ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Main card */
+.container {
+    width: 100%;
+    max-width: 780px;
+    padding: 45px;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.86);
+    backdrop-filter: blur(18px);
+    box-shadow:
+        0 25px 70px rgba(79, 70, 229, 0.13),
+        0 5px 20px rgba(30, 27, 75, 0.05);
+    animation: slideUp 0.7s ease both;
+}
+
+/* Top badge */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 15px;
+    margin-bottom: 22px;
+    border: 1px solid #ddd6fe;
+    border-radius: 50px;
+    color: #6d28d9;
+    background: linear-gradient(120deg, #f3e8ff, #dbeafe);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.3px;
+}
+
+/* Heading */
+h1 {
+    margin-bottom: 15px;
+    font-size: clamp(34px, 6vw, 48px);
+    line-height: 1.15;
+    font-weight: 800;
+    letter-spacing: -2px;
+    color: #1e1b4b;
+}
+
+h1 span {
+    color: transparent;
+    background: linear-gradient(
+        90deg,
+        #7c3aed,
+        #2563eb,
+        #06b6d4,
+        #ec4899
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.subtitle {
+    max-width: 540px;
+    margin-bottom: 32px;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+/* Input label */
+label {
+    display: block;
+    margin-bottom: 11px;
+    color: #312e81;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* Text area */
+textarea {
+    display: block;
+    width: 100%;
+    min-height: 175px;
+    padding: 19px;
+    border: 2px solid #e0e7ff;
+    border-radius: 17px;
+    outline: none;
+    resize: vertical;
+    background: linear-gradient(135deg, #ffffff, #fafaff);
+    color: #1e1b4b;
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.8;
+    transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+textarea::placeholder {
+    color: #a5b4fc;
+}
+
+textarea:focus {
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 5px rgba(139, 92, 246, 0.12);
+}
+
+/* Buttons */
+button {
+    min-height: 49px;
+    padding: 14px 23px;
+    border: none;
+    border-radius: 13px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button:focus-visible {
+    outline: 3px solid #a78bfa;
+    outline-offset: 3px;
+}
+
+button:disabled {
+    opacity: 0.65;
+    cursor: wait;
+    transform: none;
+}
+
+/* Primary button */
+#detectBtn {
+    margin-top: 19px;
+    margin-right: 10px;
+    color: white;
+    background: linear-gradient(110deg, #7c3aed, #4f46e5, #2563eb);
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.27);
+}
+
+#detectBtn:hover {
+    box-shadow: 0 12px 27px rgba(99, 102, 241, 0.38);
+    filter: saturate(1.2);
+}
+
+/* Clear button */
+#clearBtn {
+    margin-top: 19px;
+    color: #6d28d9;
+    border: 1px solid #ddd6fe;
+    background: linear-gradient(135deg, #faf5ff, #eff6ff);
+}
+
+#clearBtn:hover {
+    background: #ede9fe;
+}
+
+/* Result panel */
+.result {
+    margin-top: 27px;
+    padding: 20px;
+    border: 1px solid #ddd6fe;
+    border-radius: 16px;
+    background: linear-gradient(120deg, #f5f3ff, #eff6ff);
+    color: #4338ca;
+    font-size: 14px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+    transition: all 0.3s ease;
+}
+
+.result strong {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 17px;
+    color: #5b21b6;
+}
+
+.result p {
+    margin-top: 6px;
+    color: #64748b;
+}
+
+/* Successful prediction */
+.result.success {
+    border-color: #86efac;
+    background: linear-gradient(120deg, #ecfdf5, #dbeafe);
+    color: #047857;
+}
+
+.result.success strong {
+    color: #047857;
+}
+
+/* Error message */
+.result.error {
+    border-color: #fda4af;
+    background: linear-gradient(120deg, #fff1f2, #fff7ed);
+    color: #be123c;
+}
+
+/* Footer */
+footer {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #e9e7ff;
+    color: #8183a8;
+    font-size: 12px;
+    text-align: center;
+}
+
+footer span {
+    color: #7c3aed;
+    font-weight: 700;
+}
+
+/* Entrance animation */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+    body {
+        padding: 18px 12px;
+        align-items: flex-start;
+    }
+
+    .container {
+        padding: 27px 20px;
+        border-radius: 22px;
+        margin: 15px 0;
+    }
+
+    h1 {
+        font-size: 34px;
+        letter-spacing: -1.3px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    textarea {
+        min-height: 150px;
+    }
+
+    #detectBtn,
+    #clearBtn {
+        width: 100%;
+        margin-right: 0;
+        margin-top: 12px;
+    }
+}
+
+/* Respect accessibility settings */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}

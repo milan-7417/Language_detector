@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Language Detection AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', path='/style.css') }}">
+</head>
+<body>
+    <main class="container">
+        <span class="badge">NLP</span>
+
+        <h1>Language Detector 🔤</h1>
+
+        <p class="subtitle">
+            Enter a sentence and let machine learning predict its language.
+        </p>
+
+        <label for="textInput">Enter your text</label>
+
+        <textarea
+            id="textInput"
+            placeholder="Example: Hello, how are you?"
+            rows="5"
+        ></textarea>
+
+        <div class="actions">
+            <button id="detectBtn">Detect Language</button>
+            <button id="clearBtn" class="secondary">Clear</button>
+        </div>
+
+        <div id="result" class="result" aria-live="polite">
+            Your prediction will appear here.
+        </div>
+
+        <p class="footer">⚡️Powered by FastAPI and scikit-learn</p>
+    </main>
+
+    <script src="{{ url_for('static', path='/script.js') }}"></script>
+</body>
+</html>
